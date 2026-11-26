@@ -25,6 +25,11 @@
         <i id="musicIcon" class="fa-solid fa-music animate-spin"></i>
     </button>
 
+    <!-- TOAST NOTIFICATION (PEMBERITAHUAN SALIN) -->
+    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-amber-500 text-slate-950 px-6 py-3 rounded-xl font-medium shadow-xl opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2">
+        <i class="fa-solid fa-circle-check"></i> <span id="toastMessage">Berhasil disalin ke clipboard!</span>
+    </div>
+
     <!-- HERO COVER (HALAMAN SAMPUL) -->
     <section id="coverSection" class="fixed inset-0 z-40 bg-slate-950 flex flex-col items-center justify-center text-center p-6 transition-all duration-700 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-slate-950 to-black">
         <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:16px_16px]"></div>
@@ -96,7 +101,7 @@
                         <i class="fa-solid fa-location-dot"></i>
                     </div>
                     <h4 class="font-semibold text-white">Lokasi Acara</h4>
-                    <p class="text-slate-300 text-sm">Rumah Ucok<br><span class="text-slate-400 text-xs">Jl. Sudirman No. 123, Kota Jakarta</span></p>
+                    <p class="text-slate-300 text-sm">Rumah Ucok<br><span class="text-slate-400 text-xs">Jl. Subaster No.1, RT 3/RW 5,Pd. Jagung Tim., Kec. Serpong Utara, Kota Tangerang Selatan</span></p>
                 </div>
 
                 <!-- Embed Google Maps -->
@@ -117,6 +122,36 @@
                 <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pesta+Perayaan+Tahun+Baru+2027&dates=20261231T120000Z/20270101T030000Z&details=Mari+merayakan+malam+tahun+baru+bersama!&location=Grand+Ballroom+Hotel+Bintang+Lima+Jakarta" target="_blank" class="inline-flex items-center gap-2 px-6 py-3.5 bg-slate-900 border border-amber-500/50 hover:bg-amber-500 hover:text-slate-950 text-amber-400 font-medium rounded-xl shadow-md transition-all">
                     <i class="fa-regular fa-calendar-plus"></i> Simpan ke Google Calendar
                 </a>
+            </div>
+        </section>
+
+        <!-- AMPLOP DIGITAL / SALIN NOMOR REKENING -->
+        <section class="py-16 px-6 max-w-xl mx-auto space-y-8 border-t border-slate-900 text-center">
+            <div class="space-y-3">
+                <span class="text-amber-400 text-xs tracking-widest uppercase font-semibold">Tanda Kasih</span>
+                <h3 class="font-['Playfair_Display'] text-3xl font-bold">Amplop Digital</h3>
+                <p class="text-slate-400 text-sm">Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Dan jika ingin memberikan tanda kasih, dapat melalui:</p>
+            </div>
+
+            <div class="grid grid-cols-1 gap-4">
+                <!-- Rekening 1 -->
+                <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl space-y-3 shadow-lg">
+                    <div class="font-bold text-amber-400 tracking-wider">DANA</div>
+                    <div id="rek1" class="text-xl font-mono tracking-widest text-white">08558921423</div>
+                    <div class="text-xs text-slate-400">a.n. HANIF</div>
+                    <button onclick="copyToClipboard('08558921423', 'Nomor rekening DANA berhasil disalin!')" class="px-5 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-medium text-sm rounded-xl transition-all inline-flex items-center gap-2">
+                        <i class="fa-regular fa-copy"></i> Salin Nomor Rekening
+                    </button>
+                </div>
+
+                <!-- Rekening 2 / Alamat Kado Fisik -->
+                <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl space-y-3 shadow-lg">
+                    <div class="font-bold text-amber-400 tracking-wider">Kirim Kado / Hadiah Fisik</div>
+                    <div id="alamatKado" class="text-sm text-slate-300">Jl. Subaster No.1, RT 3/RW 5,Pd. Jagung Tim., Kec. Serpong Utara, Kota Tangerang Selatan</div>
+                    <button onclick="copyToClipboard('Jl. Subaster No.1, RT 3/RW 5,Pd. Jagung Tim., Kec. Serpong Utara, Kota Tangerang Selatan', 'Alamat pengiriman kado berhasil disalin!')" class="px-5 py-2 bg-slate-800 hover:bg-slate-700 text-amber-400 font-medium text-sm rounded-xl transition-all inline-flex items-center gap-2 border border-slate-700">
+                        <i class="fa-regular fa-copy"></i> Salin Alamat
+                    </button>
+                </div>
             </div>
         </section>
 
@@ -190,7 +225,26 @@
             isPlaying = !isPlaying;
         });
 
-        // 3. Countdown Timer (Target: 31 Desember 2026)
+        // 3. Fungsi Salin ke Clipboard & Toast Notifikasi
+        function copyToClipboard(text, message) {
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('toast');
+                const toastMessage = document.getElementById('toastMessage');
+                
+                toastMessage.innerText = message;
+                toast.classList.remove('opacity-0', 'pointer-events-none');
+                toast.classList.add('opacity-100');
+
+                setTimeout(() => {
+                    toast.classList.remove('opacity-100');
+                    toast.classList.add('opacity-0', 'pointer-events-none');
+                }, 3000);
+            }).catch(err => {
+                console.error('Gagal menyalin: ', err);
+            });
+        }
+
+        // 4. Countdown Timer (Target: 31 Desember 2026)
         const targetDate = new Date("Dec 31, 2026 23:59:59").getTime();
         setInterval(() => {
             const now = new Date().getTime();
