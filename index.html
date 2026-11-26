@@ -621,8 +621,10 @@
 
         document.querySelectorAll('.scroll-reveal').forEach(el => observer.observe(el));
 
-        const targetDate = new Date("Dec 31, 2026 23:59:59").getTime();
-        setInterval(() => {
+        const targetDate = new Date("Nov 26, 2026 13:35:00").getTime();
+        let isNewYearReached = false;
+
+        const countdownInterval = setInterval(() => {
             const now = new Date().getTime();
             const distance = targetDate - now;
 
@@ -631,6 +633,22 @@
                 document.getElementById('hours').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 document.getElementById('minutes').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 document.getElementById('seconds').innerText = Math.floor((distance % (1000 * 60)) / 1000);
+            } else {
+                // KETIKA COUNTDOWN HABIS / MASUK TAHUN BARU
+                if (!isNewYearReached) {
+                    isNewYearReached = true;
+                    // Ubah Tampilan Kotak Countdown menjadi Ucapan Tahun Baru
+                    const countdownContainer = document.getElementById('countdown').parentElement;
+                    countdownContainer.innerHTML = `
+                        <div class="space-y-4">
+                            <span class="text-amber-400 text-xs tracking-[0.3em] uppercase font-extrabold animate-pulse">🎉 HAPPY NEW YEAR 🎉</span>
+                            <h3 class="font-['Playfair_Display'] text-4xl sm:text-6xl font-extrabold bg-gradient-to-r from-amber-200 via-yellow-300 to-amber-500 bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(251,191,36,0.8)]">
+                                SELAMAT TAHUN BARU 2027!
+                            </h3>
+                            <p class="text-amber-100 text-sm sm:text-base font-medium">Mari sambut tahun baru dengan semangat, energi, dan kebahagiaan baru di Rumah Ucok!</p>
+                        </div>
+                    `;
+                }
             }
         }, 1000);
 
@@ -650,12 +668,14 @@
                 this.x = x;
                 this.y = y;
                 this.color = color;
-                this.radius = Math.random() * 2 + 1;
+                this.radius = Math.random() * 3 + 1.2;
                 this.velocity = {
-                    x: (Math.random() - 0.5) * 4,
-                    y: (Math.random() - 0.5) * 4
+                    x: (Math.random() - 0.5) * 9,
+                    y: (Math.random() - 0.5) * 9
                 };
                 this.alpha = 1;
+                this.friction = 0.95;
+                this.gravity = 0.05;
             }
             draw() {
                 ctx.save();
@@ -663,31 +683,45 @@
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
                 ctx.fillStyle = this.color;
+                ctx.shadowBlur = 12;
+                ctx.shadowColor = this.color;
                 ctx.fill();
                 ctx.restore();
             }
             update() {
+                this.velocity.x *= this.friction;
+                this.velocity.y *= this.friction;
+                this.velocity.y += this.gravity;
                 this.x += this.velocity.x;
                 this.y += this.velocity.y;
-                this.alpha -= 0.015;
+                this.alpha -= 0.012;
             }
         }
 
         function spawnFirework() {
             const x = Math.random() * canvas.width;
-            const y = Math.random() * (canvas.height * 0.6);
-            const colors = ['#fef08a', '#fbbf24', '#d97706', '#c084fc', '#e879f9'];
+            const y = Math.random() * (canvas.height * 0.7);
+            const colors = ['#fef08a', '#fbbf24', '#d97706', '#c084fc', '#e879f9', '#ffffff', '#38bdf8'];
             const color = colors[Math.floor(Math.random() * colors.length)];
-            for (let i = 0; i < 25; i++) {
+            
+            const particleCount = isNewYearReached ? 70 : 30;
+            for (let i = 0; i < particleCount; i++) {
                 particles.push(new Particle(x, y, color));
             }
         }
 
-        setInterval(spawnFirework, 1800);
+        setInterval(() => {
+            spawnFirework();
+            if (isNewYearReached) {
+                spawnFirework();
+            }
+        }, 800);
 
         function animateFireworks() {
             requestAnimationFrame(animateFireworks);
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgba(7, 4, 16, 0.2)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
             particles.forEach((p, index) => {
                 if (p.alpha <= 0) {
                     particles.splice(index, 1);
