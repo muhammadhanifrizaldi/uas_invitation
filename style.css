@@ -1,0 +1,23 @@
+/* Pengaturan tambahan untuk memastikan tampilan mobile-first optimal */
+body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Kustomisasi animasi transisi */
+#coverSection {
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Efek kustom untuk scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #020617;
+}
+::-webkit-scrollbar-thumb {
+    background: #f59e0b;
+    border-radius: 3px;
+}
