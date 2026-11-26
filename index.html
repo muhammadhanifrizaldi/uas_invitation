@@ -213,12 +213,19 @@
 
     <!-- SCRIPT UTAMA -->
     <script>
-        // 1. Logika Parameter URL untuk Nama Tamu
-        const urlParams = new URLSearchParams(window.location.search);
-        const guestParam = urlParams.get('to');
-        if (guestParam) {
-            document.getElementById('guestName').innerText = guestParam.replace(/%20/g, ' ');
-        }
+// 1. Logika Parameter URL untuk Nama Tamu (?to=Nama+Tamu)
+const urlParams = new URLSearchParams(window.location.search);
+const guestParam = urlParams.get('to');
+if (guestParam) {
+    // Gunakan decodeURIComponent atau replace '+' dan '%20' agar spasi rapi
+    const formattedName = guestParam.replace(/\+/g, ' ');
+    
+    // Tampilkan di cover undangan
+    document.getElementById('guestName').innerText = formattedName;
+    
+    // Otomatis isi kolom Nama Lengkap di form RSVP
+    document.getElementById('rsvpName').value = formattedName;
+}
 
         // 2. Tombol Buka Undangan & Kontrol Audio
         const openBtn = document.getElementById('openInvitation');
