@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Pesta Perayaan Tahun Baru</title>
+    <title>Undangan Pesta Perayaan Tahun Baru - Rumah Ucok</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
@@ -25,7 +25,7 @@
         <i id="musicIcon" class="fa-solid fa-music animate-spin"></i>
     </button>
 
-    <!-- TOAST NOTIFICATION (PEMBERITAHUAN SALIN) -->
+    <!-- TOAST NOTIFICATION -->
     <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 bg-amber-500 text-slate-950 px-6 py-3 rounded-xl font-medium shadow-xl opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2">
         <i class="fa-solid fa-circle-check"></i> <span id="toastMessage">Berhasil disalin ke clipboard!</span>
     </div>
@@ -36,7 +36,7 @@
         
         <div class="relative z-10 max-w-md w-full space-y-6">
             <span class="text-amber-400 tracking-[0.3em] uppercase text-xs font-semibold">New Year Celebration 2027</span>
-            <h1 class="font-['Playfair_Display'] text-4xl md:text-5xl font-bold tracking-tight text-white">Malam Tahun Baru bersama Kami</h1>
+            <h1 class="font-['Playfair_Display'] text-4xl md:text-5xl font-bold tracking-tight text-white">Malam Tahun Baru di Rumah Ucok</h1>
             <p class="text-slate-400 text-sm">Kepada Yth. Bapak/Ibu/Saudara/i:</p>
             
             <!-- NAMA TAMU DINAMIS DARI URL -->
@@ -66,7 +66,7 @@
         </header>
 
         <!-- INFORMASI ACARA, LOKASI, & GOOGLE MAPS -->
-        <section class="py-16 px-6 max-w-xl mx-auto space-y-10">
+        <section class="py-16 px-6 max-w-xl mx-auto space-y-10 scroll-reveal">
             <div class="text-center space-y-3">
                 <span class="text-amber-400 text-xs tracking-widest uppercase font-semibold">Save The Date</span>
                 <h3 class="font-['Playfair_Display'] text-3xl font-bold">Waktu & Tempat Acara</h3>
@@ -75,7 +75,6 @@
 
             <!-- Kartu Detail Acara -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- Hari & Tanggal -->
                 <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl text-center space-y-2 shadow-lg">
                     <div class="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-full flex items-center justify-center mx-auto mb-3 text-lg">
                         <i class="fa-solid fa-calendar-days"></i>
@@ -84,7 +83,6 @@
                     <p class="text-slate-300 text-sm">Kamis, 31 Desember 2026</p>
                 </div>
 
-                <!-- Waktu -->
                 <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl text-center space-y-2 shadow-lg">
                     <div class="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-full flex items-center justify-center mx-auto mb-3 text-lg">
                         <i class="fa-solid fa-clock"></i>
@@ -104,12 +102,10 @@
                     <p class="text-slate-300 text-sm">Rumah Ucok<br><span class="text-slate-400 text-xs">Jl. Subaster No.1, RT 3/RW 5,Pd. Jagung Tim., Kec. Serpong Utara, Kota Tangerang Selatan</span></p>
                 </div>
 
-                <!-- Embed Google Maps -->
                 <div class="w-full h-64 rounded-xl overflow-hidden border border-slate-800 shadow-inner">
                     <iframe src="https://maps.google.com/maps?q=-6.2484696%2C106.6657903&z=17&hl=id&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
 
-                <!-- Tombol Buka Google Maps Eksternal -->
                 <div class="text-center pt-2">
                     <a href="https://maps.google.com/maps?q=-6.2484696%2C106.6657903&z=17&hl=id" target="_blank" class="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-amber-400 text-sm font-medium rounded-xl transition-all">
                         <i class="fa-solid fa-map-location-dot"></i> Buka di Google Maps
@@ -119,44 +115,91 @@
 
             <!-- TOMBOL SIMPAN KE KALENDER -->
             <div class="text-center">
-                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pesta+Perayaan+Tahun+Baru+2027&dates=20261231T120000Z/20270101T030000Z&details=Mari+merayakan+malam+tahun+baru+bersama!&location=Grand+Ballroom+Hotel+Bintang+Lima+Jakarta" target="_blank" class="inline-flex items-center gap-2 px-6 py-3.5 bg-slate-900 border border-amber-500/50 hover:bg-amber-500 hover:text-slate-950 text-amber-400 font-medium rounded-xl shadow-md transition-all">
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pesta+Perayaan+Tahun+Baru+2027+di+Rumah+Ucok&dates=20261231T130000Z/20270101T040000Z&details=Mari+merayakan+malam+tahun+baru+bersama+di+Rumah+Ucok!&location=Jl.+Subaster,+Kota+Tangerang+Selatan" target="_blank" class="inline-flex items-center gap-2 px-6 py-3.5 bg-slate-900 border border-amber-500/50 hover:bg-amber-500 hover:text-slate-950 text-amber-400 font-medium rounded-xl shadow-md transition-all">
                     <i class="fa-regular fa-calendar-plus"></i> Simpan ke Google Calendar
                 </a>
             </div>
         </section>
 
-        <!-- AMPLOP DIGITAL / SALIN NOMOR REKENING -->
-        <section class="py-16 px-6 max-w-xl mx-auto space-y-8 border-t border-slate-900 text-center">
+        <!-- GALERI FOTO (DENGAN ASET LOKAL & SCROLL ANIMATION) -->
+        <section class="py-16 px-6 max-w-xl mx-auto space-y-8 border-t border-slate-900 text-center scroll-reveal">
             <div class="space-y-3">
-                <span class="text-amber-400 text-xs tracking-widest uppercase font-semibold">Tanda Kasih</span>
-                <h3 class="font-['Playfair_Display'] text-3xl font-bold">Amplop Digital</h3>
-                <p class="text-slate-400 text-sm">Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Dan jika ingin memberikan tanda kasih, dapat melalui:</p>
+                <span class="text-amber-400 text-xs tracking-widest uppercase font-semibold">Momentum Kebersamaan</span>
+                <h3 class="font-['Playfair_Display'] text-3xl font-bold">Galeri Perayaan</h3>
+                <p class="text-slate-400 text-sm">Beberapa potret keseruan acara tahun-tahun sebelumnya.</p>
             </div>
 
-            <div class="grid grid-cols-1 gap-4">
-                <!-- Rekening 1 -->
-                <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl space-y-3 shadow-lg">
-                    <div class="font-bold text-amber-400 tracking-wider">DANA</div>
-                    <div id="rek1" class="text-xl font-mono tracking-widest text-white">08558921423</div>
-                    <div class="text-xs text-slate-400">a.n. HANIF</div>
-                    <button onclick="copyToClipboard('08558921423', 'Nomor rekening DANA berhasil disalin!')" class="px-5 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-medium text-sm rounded-xl transition-all inline-flex items-center gap-2">
-                        <i class="fa-regular fa-copy"></i> Salin Nomor Rekening
-                    </button>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="overflow-hidden rounded-2xl border border-slate-800 shadow-lg group">
+                    <img src="assets/img/foto1.jpg" alt="Galeri 1" class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1467810563316-b5476525c0f9?q=80&w=600&auto=format&fit=crop'">
                 </div>
-
-                <!-- Rekening 2 / Alamat Kado Fisik -->
-                <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl space-y-3 shadow-lg">
-                    <div class="font-bold text-amber-400 tracking-wider">Kirim Kado / Hadiah Fisik</div>
-                    <div id="alamatKado" class="text-sm text-slate-300">Jl. Subaster No.1, RT 3/RW 5,Pd. Jagung Tim., Kec. Serpong Utara, Kota Tangerang Selatan</div>
-                    <button onclick="copyToClipboard('Jl. Subaster No.1, RT 3/RW 5,Pd. Jagung Tim., Kec. Serpong Utara, Kota Tangerang Selatan', 'Alamat pengiriman kado berhasil disalin!')" class="px-5 py-2 bg-slate-800 hover:bg-slate-700 text-amber-400 font-medium text-sm rounded-xl transition-all inline-flex items-center gap-2 border border-slate-700">
-                        <i class="fa-regular fa-copy"></i> Salin Alamat
-                    </button>
+                <div class="overflow-hidden rounded-2xl border border-slate-800 shadow-lg group">
+                    <img src="assets/img/foto2.jpg" alt="Galeri 2" class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?q=80&w=600&auto=format&fit=crop'">
+                </div>
+                <div class="overflow-hidden rounded-2xl border border-slate-800 shadow-lg group">
+                    <img src="assets/img/foto3.jpg" alt="Galeri 3" class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=600&auto=format&fit=crop'">
+                </div>
+                <div class="overflow-hidden rounded-2xl border border-slate-800 shadow-lg group">
+                    <img src="assets/img/foto4.jpg" alt="Galeri 4" class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=600&auto=format&fit=crop'">
                 </div>
             </div>
         </section>
 
+        <!-- AMPLOP DIGITAL / SALIN REKENING -->
+        <section class="py-16 px-6 max-w-xl mx-auto space-y-8 border-t border-slate-900 text-center scroll-reveal">
+            <div class="space-y-3">
+                <span class="text-amber-400 text-xs tracking-widest uppercase font-semibold">Tanda Kasih</span>
+                <h3 class="font-['Playfair_Display'] text-3xl font-bold">Amplop Digital</h3>
+                <p class="text-slate-400 text-sm">Kehadiran serta doa restu Anda sudah lebih dari cukup. Namun jika ingin berbagi kebahagiaan, dapat melalui:</p>
+            </div>
+
+            <div class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl space-y-3 shadow-lg">
+                <div class="font-bold text-amber-400 tracking-wider">DANA</div>
+                <div class="text-xl font-mono tracking-widest text-white">1234567890</div>
+                <div class="text-xs text-slate-400">a.n. Ucok (Tuan Rumah)</div>
+                <button onclick="copyToClipboard('1234567890', 'Nomor rekening DANA berhasil disalin!')" class="px-5 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-medium text-sm rounded-xl transition-all inline-flex items-center gap-2">
+                    <i class="fa-regular fa-copy"></i> Salin Nomor Rekening
+                </button>
+            </div>
+        </section>
+
+        <!-- FORMULIR RSVP & BUKU TAMU -->
+        <section class="py-16 px-6 max-w-xl mx-auto space-y-8 border-t border-slate-900 scroll-reveal">
+            <div class="text-center space-y-3">
+                <span class="text-amber-400 text-xs tracking-widest uppercase font-semibold">Konfirmasi Kehadiran</span>
+                <h3 class="font-['Playfair_Display'] text-3xl font-bold">RSVP & Buku Tamu</h3>
+                <p class="text-slate-400 text-sm">Mohon isi form di bawah ini untuk konfirmasi kehadiran dan memberikan ucapan.</p>
+            </div>
+
+            <form id="rsvpForm" class="bg-slate-900/80 border border-slate-800 p-6 rounded-2xl space-y-4 shadow-lg">
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">Nama Lengkap</label>
+                    <input type="text" id="rsvpName" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-amber-500" placeholder="Nama Anda...">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">Status Kehadiran</label>
+                    <select id="rsvpStatus" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-amber-500">
+                        <option value="Hadir">Hadir</option>
+                        <option value="Tidak Hadir">Tidak Hadir</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-slate-300 mb-1">Ucapan & Doa</label>
+                    <textarea id="rsvpMessage" rows="3" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-amber-500" placeholder="Tuliskan ucapan atau doa..."></textarea>
+                </div>
+                <button type="submit" class="w-full py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl transition-all shadow-md">
+                    Kirim Konfirmasi
+                </button>
+            </form>
+
+            <div class="space-y-4 pt-4">
+                <h4 class="font-semibold text-white text-lg">Daftar Ucapan & Kehadiran</h4>
+                <div id="guestBookList" class="space-y-3 max-h-72 overflow-y-auto pr-1"></div>
+            </div>
+        </section>
+
         <!-- COUNTDOWN TIMER -->
-        <section class="py-16 px-6 max-w-xl mx-auto text-center space-y-6 border-t border-slate-900">
+        <section class="py-16 px-6 max-w-xl mx-auto text-center space-y-6 border-t border-slate-900 scroll-reveal">
             <h3 class="font-['Playfair_Display'] text-3xl font-bold">Menuju Pergantian Tahun</h3>
             <div id="countdown" class="grid grid-cols-4 gap-3 text-center">
                 <div class="bg-slate-900 p-4 rounded-xl border border-slate-800"><span id="days" class="text-2xl font-bold text-amber-400">00</span><p class="text-xs text-slate-400">Hari</p></div>
@@ -170,7 +213,7 @@
 
     <!-- SCRIPT UTAMA -->
     <script>
-        // 1. Logika Parameter URL untuk Nama Tamu (?to=Nama+Tamu)
+        // 1. Logika Parameter URL untuk Nama Tamu
         const urlParams = new URLSearchParams(window.location.search);
         const guestParam = urlParams.get('to');
         if (guestParam) {
@@ -188,17 +231,14 @@
         let isPlaying = false;
 
         openBtn.addEventListener('click', () => {
-            // Animasi hilangkan cover
             cover.style.transform = 'translateY(-100%)';
             setTimeout(() => {
                 cover.style.display = 'none';
             }, 700);
 
-            // Munculkan konten utama & izinkan scroll
             mainContent.classList.remove('opacity-0', 'pointer-events-none');
             document.body.classList.remove('overflow-hidden');
 
-            // Putar Musik
             bgMusic.play().then(() => {
                 isPlaying = true;
                 musicToggle.classList.remove('hidden');
@@ -207,7 +247,6 @@
             });
         });
 
-        // Toggle Musik Floating Button
         musicToggle.addEventListener('click', () => {
             if (isPlaying) {
                 bgMusic.pause();
@@ -225,7 +264,7 @@
             isPlaying = !isPlaying;
         });
 
-        // 3. Fungsi Salin ke Clipboard & Toast Notifikasi
+        // 3. Toast & Clipboard
         function copyToClipboard(text, message) {
             navigator.clipboard.writeText(text).then(() => {
                 const toast = document.getElementById('toast');
@@ -239,12 +278,66 @@
                     toast.classList.remove('opacity-100');
                     toast.classList.add('opacity-0', 'pointer-events-none');
                 }, 3000);
-            }).catch(err => {
-                console.error('Gagal menyalin: ', err);
             });
         }
 
-        // 4. Countdown Timer (Target: 31 Desember 2026)
+        // 4. RSVP & Buku Tamu (LocalStorage)
+        const rsvpForm = document.getElementById('rsvpForm');
+        const guestBookList = document.getElementById('guestBookList');
+
+        function loadGuestBook() {
+            const entries = JSON.parse(localStorage.getItem('guestBookEntries')) || [];
+            guestBookList.innerHTML = '';
+            if(entries.length === 0) {
+                guestBookList.innerHTML = '<p class="text-xs text-slate-500 text-center py-4">Belum ada ucapan. Jadilah yang pertama!</p>';
+                return;
+            }
+            entries.forEach(entry => {
+                const div = document.createElement('div');
+                div.className = "bg-slate-950 border border-slate-800 p-4 rounded-xl space-y-1";
+                div.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <span class="font-semibold text-white text-sm">${entry.name}</span>
+                        <span class="text-xs px-2.5 py-0.5 rounded-full ${entry.status === 'Hadir' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-rose-500/20 text-rose-400'}">${entry.status}</span>
+                    </div>
+                    <p class="text-slate-300 text-xs italic">"${entry.message}"</p>
+                `;
+                guestBookList.appendChild(div);
+            });
+        }
+
+        rsvpForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('rsvpName').value;
+            const status = document.getElementById('rsvpStatus').value;
+            const message = document.getElementById('rsvpMessage').value;
+
+            const entries = JSON.parse(localStorage.getItem('guestBookEntries')) || [];
+            entries.unshift({ name, status, message });
+            localStorage.setItem('guestBookEntries', JSON.stringify(entries));
+
+            rsvpForm.reset();
+            loadGuestBook();
+            copyToClipboard('', 'Konfirmasi kehadiran berhasil dikirim!');
+        });
+
+        loadGuestBook();
+
+        // 5. Scroll Animation (Intersection Observer)
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 6. Countdown Timer (Target: 31 Desember 2026)
         const targetDate = new Date("Dec 31, 2026 23:59:59").getTime();
         setInterval(() => {
             const now = new Date().getTime();
