@@ -281,47 +281,79 @@
             });
         }
 
-        // 4. RSVP & Buku Tamu (LocalStorage)
-        const rsvpForm = document.getElementById('rsvpForm');
-        const guestBookList = document.getElementById('guestBookList');
+// URL API dari SheetDB.io Anda
+const API_URL = 'https://sheetdb.io/api/v1/w970dtulwkuu0';
 
-        function loadGuestBook() {
-            const entries = JSON.parse(localStorage.getItem('guestBookEntries')) || [];
-            guestBookList.innerHTML = '';
-            if(entries.length === 0) {
-                guestBookList.innerHTML = '<p class="text-xs text-slate-500 text-center py-4">Belum ada ucapan. Jadilah yang pertama!</p>';
-                return;
-            }
-            entries.forEach(entry => {
-                const div = document.createElement('div');
-                div.className = "bg-slate-950 border border-slate-800 p-4 rounded-xl space-y-1";
-                div.innerHTML = `
-                    <div class="flex justify-between items-center">
-                        <span class="font-semibold text-white text-sm">${entry.name}</span>
-                        <span class="text-xs px-2.5 py-0.5 rounded-full ${entry.status === 'Hadir' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-rose-500/20 text-rose-400'}">${entry.status}</span>
-                    </div>
-                    <p class="text-slate-300 text-xs italic">"${entry.message}"</p>
-                `;
-                guestBookList.appendChild(div);
-            });
+const rsvpForm = document.getElementById('rsvpForm');
+const guestBookList = document.getElementById('guestBookList');
+
+// 1. Fungsi Mengambil Data (Read) dari Google Sheets
+async function loadGuestBook() {
+    try {
+        const response = await fetch(API_URL);
+        const entries = await response.json();
+        
+        guestBookList.innerHTML = '';
+        if(!entries || entries.length === 0) {
+            guestBookList.innerHTML = '<p class="text-xs text-slate-500 text-center py-4">Belum ada ucapan. Jadilah yang pertama!</p>';
+            return;
         }
 
-        rsvpForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = document.getElementById('rsvpName').value;
-            const status = document.getElementById('rsvpStatus').value;
-            const message = document.getElementById('rsvpMessage').value;
+        // Tampilkan dari yang terbaru (reverse)
+        entries.reverse().forEach(entry => {
+            const div = document.createElement('div');
+            div.className = "bg-slate-950 border border-slate-800 p-4 rounded-xl space-y-1";
+            div.innerHTML = `
+                <div class="flex justify-between items-center">
+                    <span class="font-semibold text-white text-sm">${entry.name}</span>
+                    <span class="text-xs px-2.5 py-0.5 rounded-full ${entry.status === 'Hadir' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-rose-500/20 text-rose-400'}">${entry.status}</span>
+                </div>
+                <p class="text-slate-300 text-xs italic">"${entry.message}"</p>
+            `;
+            guestBookList.appendChild(div);
+        });
+    } catch (error) {
+        console.error('Gagal memuat buku tamu:', error);
+        guestBookList.innerHTML = '<p class="text-xs text-rose-500 text-center py-4">Gagal memuat data dari database.</p>';
+    }
+}
 
-            const entries = JSON.parse(localStorage.getItem('guestBookEntries')) || [];
-            entries.unshift({ name, status, message });
-            localStorage.setItem('guestBookEntries', JSON.stringify(entries));
+// 2. Fungsi Mengirim Data (Create) ke Google Sheets saat Form Disubmit
+rsvpForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('rsvpName').value;
+    const status = document.getElementById('rsvpStatus').value;
+    const message = document.getElementById('rsvpMessage').value;
 
-            rsvpForm.reset();
-            loadGuestBook();
-            copyToClipboard('', 'Konfirmasi kehadiran berhasil dikirim!');
+    const newData = {
+        data: [{ name: name, status: status, message: message }]
+    };
+
+    try {
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newData)
         });
 
-        loadGuestBook();
+        if(response.ok) {
+            rsvpForm.reset();
+            loadGuestBook(); // Muat ulang daftar ucapan secara online
+            copyToClipboard('', 'Konfirmasi kehadiran berhasil dikirim ke database!');
+        } else {
+            alert('Gagal mengirim data.');
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Terjadi kesalahan koneksi.');
+    }
+});
+
+// Panggil saat halaman pertama dibuka
+loadGuestBook();
 
         // 5. Scroll Animation (Intersection Observer)
         const observerOptions = { threshold: 0.1 };
